@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global Styles */
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600;
+    @apply min-h-screen;
+    @apply text-gray-900;
+    @apply font-sans;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Glass effect for cards */
+  .glass-card {
+    @apply bg-white/20 backdrop-blur-lg;
+    @apply border border-white/30;
+    @apply shadow-xl rounded-2xl;
+  }
+
+  /* Hover effect for interactive cards */
+  .card-hover {
+    @apply transition-all duration-300;
+    @apply hover:scale-105 hover:shadow-2xl;
+  }
+
+  /* Input field styling */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl;
+    @apply bg-white/30 backdrop-blur-md;
+    @apply border border-white/40;
+    @apply text-white placeholder-white/70;
+    @apply focus:outline-none focus:ring-2 focus:ring-white/50;
+    @apply transition-all duration-200;
+  }
+
+  /* Button styling */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl;
+    @apply bg-white/30 backdrop-blur-md;
+    @apply border border-white/40;
+    @apply text-white font-semibold;
+    @apply hover:bg-white/40;
+    @apply transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-white/50;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  /* Text shadow for better readability on gradients */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Smooth transitions */
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.loading-shimmer {
+  animation: shimmer 2s infinite;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+}
