@@ -9,7 +9,7 @@ import {
   getWeatherByCity,
   getWeatherByGeolocation,
 } from "@/services/weatherService";
-import { convertTemperature } from "@/utils/converters";
+import { convertTemperature } from "@/utils/converter";
 
 /**
  * Custom hook to manage weather data and state
