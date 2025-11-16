@@ -9,11 +9,27 @@ import {
   TemperatureUnit,
 } from '@/types/weather';
 import { convertTemperature } from '@/utils/converter';
-import { getISODate, getDayName, getShortDayName } from '@/utils/formatters';
+import { getISODate, getDayName } from '@/utils/formatters';
 
 // Get API credentials from environment variables
 const API_KEY = import.meta.env.VITE_WEATHER_API_KEY;
 const API_URL = import.meta.env.VITE_WEATHER_API_URL;
+
+/**
+ * Validate that required API credentials are set
+ */
+const validateApiCredentials = () => {
+  if (!API_KEY) {
+    throw new Error(
+      'Missing VITE_WEATHER_API_KEY environment variable. Please set it in your .env file.'
+    );
+  }
+  if (!API_URL) {
+    throw new Error(
+      'Missing VITE_WEATHER_API_URL environment variable. Please set it in your .env file.'
+    );
+  }
+};
 
 /**
  * Base fetch function with error handling
@@ -45,6 +61,8 @@ export const searchCities = async (
   cityName: string, 
   limit: number = 5
 ): Promise<Location[]> => {
+  validateApiCredentials();
+  
   if (!cityName.trim()) {
     return [];
   }

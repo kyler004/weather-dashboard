@@ -9,7 +9,6 @@ import {
   getWeatherByCity,
   getWeatherByGeolocation,
 } from "@/services/weatherService";
-import { convertTemperature } from "@/utils/converter";
 
 /**
  * Custom hook to manage weather data and state
@@ -91,7 +90,7 @@ export const useWeather = () => {
       // If we have current weather data, convert it
       let convertedCurrent: CurrentWeather | null = null;
       if (prev.current) {
-        const conversionFactor = newUnit === "fahrenheit" ? 1.8 : 1 / 1.8;
+        const conversionFactor = newUnit === "fahrenheit" ? 1.8 : 5 / 9;
         const offset = newUnit === "fahrenheit" ? 32 : -32 * (5 / 9);
 
         convertedCurrent = {
@@ -109,7 +108,7 @@ export const useWeather = () => {
 
       // Convert forecast data
       const convertedForecast: DailyForecast[] = prev.forecast.map((day) => {
-        const conversionFactor = newUnit === "fahrenheit" ? 1.8 : 1 / 1.8;
+        const conversionFactor = newUnit === "fahrenheit" ? 1.8 : 5 / 9;
         const offset = newUnit === "fahrenheit" ? 32 : -32 * (5 / 9);
 
         return {

@@ -47,7 +47,7 @@ export const SearchBar = ({
           <button
             onClick={handleSearch}
             disabled={loading || !searchValue.trim()}
-            className="absolute right-3 top-1/2 translate-y-1/2 text-white/80 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="absolute right-3 top-1/3  text-white/80 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             <Search size={20} />
           </button>
